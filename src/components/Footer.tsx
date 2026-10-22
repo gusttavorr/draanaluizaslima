@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Logo } from './Logo';
 import { clinicData } from '../config/clinicData';
 import { InstagramIcon } from './icons/InstagramIcon';
-import { ArrowUp, X, Shield, MapPin } from 'lucide-react';
+import { ArrowUp, X, Shield } from 'lucide-react';
+
+const currentYear = new Date().getFullYear();
 
 export const Footer: React.FC = () => {
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
@@ -13,11 +15,11 @@ export const Footer: React.FC = () => {
 
   const navLinks = [
     { label: 'Início', href: '#inicio' },
-    { label: 'A Dra. Alice', href: '#sobre' },
-    { label: 'Tratamentos', href: '#tratamentos' },
-    { label: 'A Clínica', href: '#clinica' },
-    { label: 'Presença Digital', href: '#presenca-digital' },
-    { label: 'Contato', href: '#contato' },
+    { label: 'Sobre a Dra. Luiza', href: '#sobre' },
+    { label: 'Procedimentos', href: '#procedimentos' },
+    { label: 'Cuidado & Ética', href: '#cuidado' },
+    { label: 'Meu Trabalho', href: '#meu-trabalho' },
+    { label: 'Agendamento', href: '#agendamento' },
   ];
 
   return (
@@ -33,7 +35,7 @@ export const Footer: React.FC = () => {
               <Logo variant="full" theme="light" className="mb-4" />
               
               <p className="text-xs sm:text-sm text-[#A89F93] leading-relaxed max-w-sm mb-6 font-light">
-                Odontologia estética contemporânea, facetas em resina, alinhadores invisíveis e reabilitação oral com acolhimento, naturalidade e cuidado individualizado em Arujá, São Paulo.
+                Estética facial contemporânea, toxina botulínica, reestruturação e sustentação dos contornos faciais com acolhimento, naturalidade e cuidado individualizado.
               </p>
 
               <div className="flex items-center gap-3">
@@ -42,7 +44,7 @@ export const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-[#27231F] hover:bg-[#C4A47C] text-[#DFC49E] hover:text-[#181614] flex items-center justify-center transition-colors border border-[#3A342D]"
-                  aria-label="Instagram da Dra. Alice Bastos"
+                  aria-label="Instagram da Dra. Luiza S. Lima"
                 >
                   <InstagramIcon className="w-4 h-4" />
                 </a>
@@ -78,26 +80,16 @@ export const Footer: React.FC = () => {
                 Informações Éticas & Legais
               </h4>
               <p className="text-xs text-[#9E9385] leading-relaxed mb-3">
-                <strong>Responsável Técnica:</strong> Dra. Alice Bastos
+                <strong>Responsável Técnica:</strong> {clinicData.doctor.name}
                 <br />
-                <strong>Atuação:</strong> Cirurgiã-Dentista &bull; Odontologia Clínica e Estética
+                <strong>Atuação:</strong> Estética Facial & Harmonização
                 <br />
                 <strong>Registro Profissional:</strong> {clinicData.doctor.croNotice}
                 <br />
-                <strong>Endereço:</strong>{' '}
-                <a
-                  href={clinicData.contact.mapsRouteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#DFC49E] transition-colors underline-offset-2 hover:underline inline-flex items-center gap-1 text-[#C4B7A6]"
-                  title="Traçar rota no Google Maps"
-                >
-                  <span>{clinicData.contact.address}</span>
-                  <MapPin className="w-3 h-3 text-[#C4A47C] shrink-0" />
-                </a>
+                <strong>Atendimento:</strong> {clinicData.contact.locationNotice}
               </p>
               <p className="text-[11px] text-[#7A7064] leading-relaxed">
-                Este website tem finalidade estritamente institucional e informativa, de acordo com o Código de Ética Odontológica (Resolução CFO). Não substitui a avaliação clínica presencial individualizada.
+                Este website tem finalidade estritamente institucional e informativa. Não substitui a avaliação presencial individualizada e não apresenta garantia de resultados específicos, respeitando a resposta biológica de cada organismo.
               </p>
             </div>
 
@@ -106,7 +98,7 @@ export const Footer: React.FC = () => {
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A7165]">
             <p>
-              &copy; {new Date().getFullYear()} Dra. Alice Bastos &bull; Todos os direitos reservados.
+              &copy; {currentYear} {clinicData.doctor.name} &bull; Todos os direitos reservados.
             </p>
 
             <div className="flex items-center gap-6">
@@ -155,22 +147,22 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-2 mb-3">
               <Shield className="w-5 h-5 text-[#9D7C50]" />
               <h3 className="font-serif text-xl font-normal text-[#1F1C18]">
-                Política de Privacidade & Ética
+                Política de Privacidade & Conduta
               </h3>
             </div>
 
             <div className="space-y-4 text-xs text-[#5D554C] leading-relaxed">
               <p>
-                <strong>Compromisso de Privacidade:</strong> O website da Dra. Alice Bastos preza pela total confidencialidade e segurança dos dados fornecidos por potenciais pacientes, respeitando a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).
+                <strong>Compromisso de Privacidade:</strong> O website da Dra. Luiza S. Lima preza pela total confidencialidade e segurança dos dados fornecidos por potenciais pacientes, respeitando a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).
               </p>
               <p>
-                <strong>Uso dos Dados de Contato:</strong> As informações preenchidas nos formulários de contato são utilizadas exclusivamente para o direcionamento e facilitação do agendamento de consultas via canais oficiais (WhatsApp), sem compartilhamento com terceiros.
+                <strong>Uso dos Dados:</strong> As informações preenchidas no formulário de pré-agendamento são utilizadas unicamente para orientar a mensagem enviada pelo usuário via WhatsApp, sem qualquer armazenamento indevido ou compartilhamento com terceiros.
               </p>
               <p>
-                <strong>Diretrizes do CFO:</strong> Em cumprimento às normas do Conselho Federal de Odontologia e do Código de Ética Odontológica, os conteúdos apresentados neste site não garantem resultados pré-determinados, pois cada organismo e anatomia bucal demandam diagnóstico individual.
+                <strong>Ética Profissional:</strong> Os conteúdos exibidos têm caráter informativo sobre procedimentos estéticos faciais. Cada procedimento depende de avaliação clínica presencial prévia, sem garantia de resultados pré-estabelecidos.
               </p>
               <p>
-                <strong>Registro Profissional:</strong> Os dados de CRO-SP e endereço definitivo da clínica serão atualizados no lançamento formal definitivo do website.
+                <strong>Registro Profissional:</strong> Dados de registro de classe e localização detalhada serão informados e formalizados nos canais oficiais de atendimento.
               </p>
             </div>
 

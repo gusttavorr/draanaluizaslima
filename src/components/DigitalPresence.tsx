@@ -29,7 +29,7 @@ export const DigitalPresence: React.FC = () => {
 
   return (
     <section
-      id="presenca-digital"
+      id="meu-trabalho"
       className="py-16 sm:py-28 bg-gradient-to-b from-[#FAF8F5] via-[#F4EFE6] to-[#FAF8F5] relative overflow-hidden"
     >
       {/* Ambient Lighting Spheres */}
@@ -42,16 +42,16 @@ export const DigitalPresence: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:hidden">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFE8DC] border border-[#DFCBB5] text-[#786148] text-[11px] sm:text-xs font-semibold tracking-[0.16em] sm:tracking-[0.2em] uppercase mb-4">
             <InstagramIcon className="w-3.5 h-3.5 text-[#B8976C]" />
-            <span>Presença Digital Oficial</span>
+            <span>Perfil Oficial &bull; @dra.luizaslima</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl text-[#1E1B18] font-normal leading-[1.18] mb-3 sm:mb-4 break-words">
-            Seu cuidado também está presente no{' '}
-            <span className="italic text-[#9D7C50]">digital.</span>
+            Um pouco mais sobre o{' '}
+            <span className="italic text-[#9D7C50]">meu trabalho.</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#554F49] font-light leading-relaxed">
-            Conheça mais sobre o universo da Dra. Alice, acompanhe seus conteúdos e fique por dentro de informações sobre saúde e cuidados com o sorriso.
+            Acompanhe casos reais, reflexões sobre anatomia e a rotina de cuidados de harmonização e estética facial no Instagram oficial da Dra. Luiza.
           </p>
         </div>
 
@@ -64,24 +64,24 @@ export const DigitalPresence: React.FC = () => {
             {/* Desktop Kicker */}
             <div className="hidden lg:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFE8DC] border border-[#DFCBB5] text-[#786148] text-xs font-semibold tracking-[0.2em] uppercase mb-4 shadow-2xs">
               <InstagramIcon className="w-3.5 h-3.5 text-[#B8976C]" />
-              <span>Presença Digital Oficial</span>
+              <span>Conteúdo Real &bull; @dra.luizaslima</span>
             </div>
 
             {/* Desktop Headline */}
             <h2 className="hidden lg:block font-serif text-4xl lg:text-5xl text-[#1E1B18] font-normal leading-[1.15] mb-5">
-              Seu cuidado também está presente no{' '}
-              <span className="italic text-[#9D7C50]">digital.</span>
+              Um pouco mais sobre o{' '}
+              <span className="italic text-[#9D7C50]">meu trabalho.</span>
             </h2>
 
             {/* Desktop Subtitle */}
             <p className="hidden lg:block text-base sm:text-lg text-[#554F49] font-light leading-relaxed mb-8 max-w-xl">
-              Conheça mais sobre o universo da Dra. Alice, acompanhe seus conteúdos e fique por dentro de informações sobre saúde e cuidados com o sorriso.
+              Acompanhe publicações reais, orientações sobre sustentação facial, gerenciamento de flacidez e o acolhimento dedicado a cada paciente.
             </p>
 
             {/* Content Selector Description */}
             <div className="w-full mb-3 sm:mb-4 flex items-center justify-between">
               <span className="text-[11px] sm:text-xs uppercase tracking-widest font-bold text-[#8E7964]">
-                Publicações e Casos Reais:
+                Publicações Selecionadas do Perfil:
               </span>
               <span className="text-xs text-[#8E7964] font-mono">
                 {selectedPostIndex + 1} de {posts.length}
@@ -89,7 +89,7 @@ export const DigitalPresence: React.FC = () => {
             </div>
 
             {/* Interactive Reels Selector Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 w-full mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full mb-6 sm:mb-8">
               {posts.map((post, idx) => {
                 const isActive = idx === selectedPostIndex;
                 return (
@@ -97,46 +97,43 @@ export const DigitalPresence: React.FC = () => {
                     key={post.id}
                     type="button"
                     onClick={() => handlePostChange(idx)}
-                    className={`text-left p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 flex items-start gap-3 cursor-pointer ${
+                    className={`text-left p-3 rounded-2xl border transition-all duration-300 flex flex-col justify-between cursor-pointer ${
                       isActive
-                        ? 'bg-white border-[#C4A47C] shadow-md ring-2 ring-[#C4A47C]/20'
+                        ? 'bg-white border-[#C4A47C] shadow-md ring-2 ring-[#C4A47C]/25'
                         : 'bg-white/70 border-[#E8DFCFC0] hover:bg-white hover:border-[#D5C6B1]'
                     }`}
                   >
-                    <div className="w-12 h-16 rounded-xl overflow-hidden shrink-0 relative bg-[#E8E1D5]">
+                    <div className="w-full h-24 rounded-xl overflow-hidden shrink-0 relative bg-[#E8E1D5] mb-2.5">
                       <img
                         src={post.thumbnail}
                         alt={post.title}
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                        <Play className="w-3.5 h-3.5 text-white fill-white" />
+                      <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
+                        <Play className="w-4 h-4 text-white fill-white" />
                       </div>
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-[#9D7C50]">
+                      <span className="text-[9px] font-semibold uppercase tracking-wider text-[#9D7C50] block truncate">
                         {post.category}
                       </span>
-                      <h4 className="text-xs font-semibold text-[#1F1C18] truncate mt-0.5">
+                      <h4 className="text-xs font-semibold text-[#1F1C18] line-clamp-1 mt-0.5">
                         {post.title}
                       </h4>
-                      <p className="text-[10px] sm:text-[11px] text-[#6E6760] line-clamp-1 mt-0.5">
-                        {post.description}
-                      </p>
                     </div>
                   </button>
                 );
               })}
             </div>
 
-            {/* Display Mode Switcher (Interactive Preview vs. Official Embed) */}
+            {/* Display Mode Switcher */}
             <div className="w-full p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-[#E5DAC9] mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4 text-[#9D7C50]" />
                 <span className="text-xs font-medium text-[#38332D]">
-                  Modo de visualização no smartphone:
+                  Visualização no smartphone:
                 </span>
               </div>
 
@@ -175,7 +172,7 @@ export const DigitalPresence: React.FC = () => {
                 className="inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#24211D] to-[#3B342C] text-[#FAF8F5] text-xs font-semibold tracking-wider uppercase hover:from-[#38332D] hover:to-[#50483E] transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 group cursor-pointer"
               >
                 <InstagramIcon className="w-4 h-4 text-[#DFC49E] group-hover:scale-110 transition-transform" />
-                <span>Conheça o Instagram da Dra. Alice</span>
+                <span>Visitar Instagram Oficial @dra.luizaslima</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#DFC49E]/70" />
               </a>
 
@@ -185,7 +182,7 @@ export const DigitalPresence: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full bg-white/70 hover:bg-white text-[#38332D] text-xs font-medium tracking-wide border border-[#DFCBB5] transition-all cursor-pointer"
               >
-                <span>Assistir Reel Selecionado</span>
+                <span>Abrir Publicação Original</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#B8976C]" />
               </a>
             </div>
@@ -193,7 +190,7 @@ export const DigitalPresence: React.FC = () => {
             {/* Verified Profile Notice */}
             <div className="flex items-center gap-2 mt-4 text-[11px] text-[#7A7268]">
               <Sparkles className="w-3 h-3 text-[#C4A47C]" />
-              <span>Perfil oficial verificado: <strong className="font-semibold text-[#24211D]">{clinicData.contact.instagramHandle}</strong></span>
+              <span>Perfil oficial da profissional: <strong className="font-semibold text-[#24211D]">{clinicData.contact.instagramHandle}</strong></span>
             </div>
 
           </div>
@@ -213,7 +210,7 @@ export const DigitalPresence: React.FC = () => {
                 {/* Metallic Edge Specular Highlight */}
                 <div className="absolute inset-0 rounded-[42px] sm:rounded-[46px] border border-white/10 pointer-events-none" />
 
-                {/* Smartphone Side Buttons (Hardware details) */}
+                {/* Smartphone Side Buttons */}
                 <div className="absolute -left-[5px] top-24 sm:top-28 w-[3px] h-9 sm:h-10 bg-[#36322E] rounded-l-sm" />
                 <div className="absolute -left-[5px] top-38 sm:top-42 w-[3px] h-10 sm:h-12 bg-[#36322E] rounded-l-sm" />
                 <div className="absolute -right-[5px] top-28 sm:top-32 w-[3px] h-12 sm:h-14 bg-[#36322E] rounded-r-sm" />
@@ -223,7 +220,7 @@ export const DigitalPresence: React.FC = () => {
                   
                   {/* Top Status Bar & Dynamic Island */}
                   <div className="relative z-30 pt-2 px-5 sm:px-6 flex items-center justify-between text-white text-[10px] sm:text-[11px] select-none font-medium">
-                    <span>20:26</span>
+                    <span>11:50</span>
                     
                     {/* Dynamic Island / Speaker */}
                     <div className="w-20 sm:w-24 h-4 sm:h-5 bg-[#141210] rounded-full flex items-center justify-end pr-2 border border-white/5">
@@ -247,7 +244,7 @@ export const DigitalPresence: React.FC = () => {
                         <img
                           src={currentPost.thumbnail}
                           alt={currentPost.title}
-                          className="absolute inset-0 w-full h-full object-cover object-center"
+                          className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500"
                         />
 
                         {/* Top & Bottom Cinematic Gradient Overlays */}
@@ -327,17 +324,22 @@ export const DigitalPresence: React.FC = () => {
                           <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
                             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#C4A47C] overflow-hidden bg-[#24211D] flex items-center justify-center shrink-0">
                               <img
-                                src="/images/hero-dra-alice.png"
-                                alt="Dra. Alice Bastos"
+                                src="/images/hero-dra-luiza.png"
+                                alt="Dra. Luiza S. Lima"
                                 className="w-full h-full object-cover object-top"
                               />
                             </div>
                             <span className="text-[11px] sm:text-xs font-semibold drop-shadow-md">
-                              dra.alicebastos
+                              dra.luizaslima
                             </span>
-                            <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[8px] sm:text-[9px] font-medium border border-white/20">
+                            <a
+                              href={clinicData.contact.instagramUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-1.5 sm:px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[8px] sm:text-[9px] font-medium border border-white/20 hover:bg-white/30"
+                            >
                               Seguir
-                            </span>
+                            </a>
                           </div>
 
                           {/* Caption */}
@@ -365,7 +367,7 @@ export const DigitalPresence: React.FC = () => {
                             className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white text-black text-[10px] sm:text-[11px] font-semibold hover:bg-[#FAF8F5] transition-colors shadow-lg"
                           >
                             <InstagramIcon className="w-3 h-3 text-[#B8976C]" />
-                            <span>Assistir no Instagram</span>
+                            <span>Ver no Instagram</span>
                           </a>
                         </div>
 
@@ -376,7 +378,7 @@ export const DigitalPresence: React.FC = () => {
                         <iframe
                           key={currentPost.code}
                           src={`https://www.instagram.com/p/${currentPost.code}/embed/`}
-                          title={`Post do Instagram Dra. Alice Bastos ${currentPost.title}`}
+                          title={`Post do Instagram Dra. Luiza S. Lima - ${currentPost.title}`}
                           className="w-full h-full border-0"
                           scrolling="no"
                           allowFullScreen

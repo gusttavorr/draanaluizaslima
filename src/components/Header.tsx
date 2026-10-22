@@ -17,11 +17,11 @@ export const Header: React.FC = () => {
 
   const navLinks = [
     { label: 'Início', href: '#inicio' },
-    { label: 'A Dra. Alice', href: '#sobre' },
-    { label: 'Tratamentos', href: '#tratamentos' },
-    { label: 'A Clínica', href: '#clinica' },
-    { label: 'Presença Digital', href: '#presenca-digital' },
-    { label: 'Contato', href: '#contato' },
+    { label: 'Sobre', href: '#sobre' },
+    { label: 'Procedimentos', href: '#procedimentos' },
+    { label: 'Cuidado & Ética', href: '#cuidado' },
+    { label: 'Meu Trabalho', href: '#meu-trabalho' },
+    { label: 'Contato', href: '#agendamento' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -50,12 +50,12 @@ export const Header: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo Signature */}
             <a
               href="#inicio"
               onClick={(e) => handleLinkClick(e, '#inicio')}
               className="group focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C]/40 rounded-lg p-1 -m-1 transition-transform"
-              aria-label="Página inicial Dra. Alice Bastos"
+              aria-label="Página inicial Dra. Luiza S. Lima"
             >
               <Logo variant="full" />
             </a>
@@ -80,10 +80,10 @@ export const Header: React.FC = () => {
                 href={clinicData.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#24211D] text-[#FAF8F5] hover:bg-[#3D3730] transition-all duration-200 shadow-xs hover:shadow-md hover:scale-[1.02] border border-[#3D3730] cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#1F1C18] text-[#FAF8F5] hover:bg-[#38332D] transition-all duration-200 shadow-xs hover:shadow-md hover:scale-[1.02] border border-[#3D3730] cursor-pointer"
               >
                 <Calendar className="w-3.5 h-3.5 text-[#DFC49E]" />
-                <span>Agendar consulta</span>
+                <span>Agendar avaliação</span>
               </a>
             </div>
 
@@ -93,7 +93,7 @@ export const Header: React.FC = () => {
                 href={clinicData.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-medium bg-[#24211D] text-[#FAF8F5]"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-medium bg-[#1F1C18] text-[#FAF8F5]"
                 aria-label="Agendar via WhatsApp"
               >
                 <span>Agendar</span>
@@ -102,7 +102,7 @@ export const Header: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-[#24211D] hover:bg-[#EFEAE1] transition-colors focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C] cursor-pointer"
+                className="p-2 rounded-lg text-[#1F1C18] hover:bg-[#EFEAE1] transition-colors focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C] cursor-pointer"
                 aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
                 aria-expanded={mobileMenuOpen}
               >
@@ -142,7 +142,7 @@ export const Header: React.FC = () => {
                   className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#1F1C18] text-[#FAF8F5]"
                 >
                   <Calendar className="w-4 h-4 text-[#DFC49E]" />
-                  <span>Agendar Consulta</span>
+                  <span>Agendar Avaliação</span>
                 </a>
               </div>
             </nav>

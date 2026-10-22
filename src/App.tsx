@@ -3,7 +3,6 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Treatments } from './components/Treatments';
-import { Clinic } from './components/Clinic';
 import { DigitalPresence } from './components/DigitalPresence';
 import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
@@ -18,25 +17,22 @@ export const App: React.FC = () => {
 
       {/* Main Content Sections */}
       <main className="flex-1 w-full">
-        {/* 1. Hero Section (with real photo 1 & editorial asymmetry) */}
+        {/* 1. Hero Section (Real photo of Dra. Luiza, high-end editorial composition) */}
         <Hero />
 
-        {/* 2. About Dra. Alice Section (with real photo 2 & biomimetic ethics) */}
+        {/* 2. About Dra. Luiza (Ethical, personalized care and essence-respecting philosophy) */}
         <About />
 
-        {/* 3. Treatments Section (confirmed procedures: veneers, aligners, etc.) */}
+        {/* 3. Treatments Section (Botox in visual highlight, facial structuring, firmness & harmony) */}
         <Treatments />
 
-        {/* 4. The Clinic Section (real workspace, biophilic ambience in Arujá) */}
-        <Clinic />
-
-        {/* 5. NEW: Digital Presence Section (Realistic smartphone mockup & real Instagram reels) */}
-        <DigitalPresence />
-
-        {/* 6. Ethical Experience & Reassurance Section */}
+        {/* 4. Experience & Ethical Reassurance (Individualized diagnosis education, pillars of care) */}
         <Experience />
 
-        {/* 7. Contact & Pre-Scheduling Section (WhatsApp routing & address) */}
+        {/* 5. 'Um pouco mais sobre meu trabalho' (Realistic smartphone mockup & real Instagram reels) */}
+        <DigitalPresence />
+
+        {/* 6. Pre-Scheduling via WhatsApp (Clean form with requested fields) */}
         <Contact />
       </main>
 

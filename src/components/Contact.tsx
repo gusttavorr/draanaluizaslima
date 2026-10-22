@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { clinicData } from '../config/clinicData';
 import { InstagramIcon } from './icons/InstagramIcon';
-import { MapPin, Clock, Send, CheckCircle2, ShieldCheck, Navigation, ExternalLink } from 'lucide-react';
+import { Clock, Send, CheckCircle2, ShieldCheck, Sparkles, MessageCircle, ExternalLink } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     nome: '',
-    telefone: '',
-    procedimento: 'Facetas e Lentes em Resina',
+    procedimento: 'Toxina Botulínica (Botox)',
+    periodo: 'A combinar',
     mensagem: '',
   });
 
@@ -16,16 +16,21 @@ export const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Olá, Dra. Alice!\n\nMeu nome é ${formData.nome}.\nTelefone: ${formData.telefone}\nTenho interesse em: ${formData.procedimento}.\n${
-        formData.mensagem ? `Mensagem: ${formData.mensagem}` : ''
-      }\n\nGostaria de verificar a disponibilidade de horários para uma avaliação em Arujá.`
+      `Olá, Dra. Luiza!\n\nSolicitação de agendamento:\n• Nome: ${formData.nome}\n• Procedimento de interesse: ${formData.procedimento}\n• Melhor período: ${formData.periodo}\n${
+        formData.mensagem ? `• Mensagem adicional: ${formData.mensagem}\n` : ''
+      }\nGostaria de verificar a disponibilidade de horários para uma avaliação facial.`
     );
-    window.open(`https://wa.me/?text=${text}`, '_blank');
+
+    const targetUrl = clinicData.contact.whatsappNumber
+      ? `https://wa.me/${clinicData.contact.whatsappNumber}?text=${text}`
+      : `https://wa.me/?text=${text}`;
+
+    window.open(targetUrl, '_blank');
     setSubmitted(true);
   };
 
   return (
-    <section id="contato" className="py-16 sm:py-28 bg-[#F6F1EA] relative overflow-hidden">
+    <section id="agendamento" className="py-16 sm:py-28 bg-[#F6F1EA] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -35,21 +40,21 @@ export const Contact: React.FC = () => {
           </span>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1E1B18] font-normal leading-[1.18] mb-3 sm:mb-4 break-words">
-            Vamos conversar sobre o <span className="italic text-[#9D7C50]">seu sorriso?</span>
+            Solicite sua avaliação <span className="italic text-[#9D7C50]">personalizada.</span>
           </h2>
 
           <p className="text-sm sm:text-lg text-[#554F49] font-light leading-relaxed">
-            Entre em contato para esclarecer suas dúvidas e verificar a disponibilidade de horários no consultório em Arujá.
+            Preencha os dados abaixo para iniciar sua conversa com a Dra. Luiza pelo WhatsApp, com sua solicitação organizada e sem espera.
           </p>
         </div>
 
         {/* Contact Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Left Column: Direct Contact Info & Schedule Details (5 cols) */}
+          {/* Left Column: Direct Contact Info & Alternative Channels (5 cols) */}
           <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6 text-left w-full">
             
-            {/* WhatsApp Highlight Card */}
+            {/* WhatsApp Card */}
             <div className="p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-[#E5DAC9] shadow-sm">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#EFE8DC] text-[#9D7C50] flex items-center justify-center mb-3 sm:mb-4">
                 <Send className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -58,7 +63,7 @@ export const Contact: React.FC = () => {
                 Atendimento pelo WhatsApp
               </h3>
               <p className="text-xs text-[#6B655F] mb-4 sm:mb-5 leading-relaxed">
-                Canal ágil para dúvidas preliminares, orientações sobre procedimentos e agendamento de consultas.
+                Canal exclusivo para agendamento de avaliações, esclarecimento de dúvidas e informações sobre disponibilidade.
               </p>
               <a
                 href={clinicData.contact.whatsappUrl}
@@ -66,7 +71,7 @@ export const Contact: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2.5 py-3 sm:py-3.5 px-6 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider hover:bg-[#38332D] transition-colors shadow-2xs cursor-pointer"
               >
-                <span>Iniciar conversa no WhatsApp</span>
+                <span>Falar no WhatsApp</span>
                 <Send className="w-3.5 h-3.5 text-[#DFC49E]" />
               </a>
               <p className="text-[10px] text-[#8C8379] mt-3 text-center italic">
@@ -74,44 +79,10 @@ export const Contact: React.FC = () => {
               </p>
             </div>
 
-            {/* Location & Clinic Hours */}
+            {/* Direct Channel & Clinic Policy */}
             <div className="p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-white/80 border border-[#E5DAC9] flex flex-col gap-4 sm:gap-5">
               
-              <div className="flex items-start gap-3.5 sm:gap-4">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
-                <div>
-                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#9D7C50]">Localização</h4>
-                  <p className="text-xs sm:text-sm font-medium text-[#1F1C18] mt-0.5">{clinicData.contact.address}</p>
-                  <a
-                    href={clinicData.contact.mapsRouteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EE] hover:bg-[#EFE8DC] text-[#8C6D45] text-[10px] sm:text-[11px] font-semibold border border-[#E5DAC9] transition-colors mt-2"
-                  >
-                    <Navigation className="w-3 h-3 text-[#B8976C]" />
-                    <span>Traçar rota no Google Maps</span>
-                    <ExternalLink className="w-2.5 h-2.5 text-[#B8976C]/80" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="h-px bg-[#EFEAE2]" />
-
-              <div className="flex items-start gap-3.5 sm:gap-4">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5">
-                  <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
-                <div>
-                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#9D7C50]">Horário de Atendimento</h4>
-                  <p className="text-xs sm:text-sm font-medium text-[#1F1C18] mt-0.5">{clinicData.contact.hours}</p>
-                  <p className="text-[11px] sm:text-xs text-[#7A7268] mt-1">Atendimento exclusivamente mediante reserva prévia.</p>
-                </div>
-              </div>
-
-              <div className="h-px bg-[#EFEAE2]" />
-
+              {/* Instagram Direct Option */}
               <div className="flex items-start gap-3.5 sm:gap-4">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5">
                   <InstagramIcon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -122,11 +93,43 @@ export const Contact: React.FC = () => {
                     href={clinicData.contact.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs sm:text-sm font-semibold text-[#1F1C18] hover:text-[#9D7C50] transition-colors mt-0.5 block"
+                    className="text-xs sm:text-sm font-semibold text-[#1F1C18] hover:text-[#9D7C50] transition-colors mt-0.5 inline-flex items-center gap-1.5"
                   >
-                    {clinicData.contact.instagramHandle}
+                    <span>{clinicData.contact.instagramHandle}</span>
+                    <ExternalLink className="w-3 h-3 text-[#B8976C]" />
                   </a>
-                  <p className="text-[11px] sm:text-xs text-[#7A7268] mt-0.5">Acompanhe novidades, casos clínicos e bastidores.</p>
+                  <p className="text-[11px] text-[#7A7268] mt-1">
+                    Você também pode enviar uma mensagem direta pelo Instagram para falar com a Dra. Luiza.
+                  </p>
+                </div>
+              </div>
+
+              <div className="h-px bg-[#EFEAE2]" />
+
+              {/* Hours */}
+              <div className="flex items-start gap-3.5 sm:gap-4">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5">
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <div>
+                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#9D7C50]">Disponibilidade</h4>
+                  <p className="text-xs sm:text-sm font-medium text-[#1F1C18] mt-0.5">{clinicData.contact.hours}</p>
+                  <p className="text-[11px] text-[#7A7268] mt-1">Atendimento estritamente mediante agendamento prévio.</p>
+                </div>
+              </div>
+
+              <div className="h-px bg-[#EFEAE2]" />
+
+              {/* Attendance Protocol */}
+              <div className="flex items-start gap-3.5 sm:gap-4">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <div>
+                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#9D7C50]">Atendimento Privado</h4>
+                  <p className="text-xs text-[#6B655F] mt-0.5 leading-relaxed">
+                    Cada consulta conta com horário reservado com exclusividade, garantindo privacidade, discrição e pontualidade.
+                  </p>
                 </div>
               </div>
 
@@ -140,10 +143,10 @@ export const Contact: React.FC = () => {
               
               <div className="mb-5 sm:mb-6">
                 <h3 className="font-serif text-xl sm:text-2xl text-[#1F1C18] font-normal mb-1">
-                  Solicitar Contato ou Pré-Agendamento
+                  Solicitar Agendamento de Avaliação
                 </h3>
                 <p className="text-xs text-[#6B655F]">
-                  Preencha os campos abaixo para ser direcionado ao WhatsApp com sua mensagem pronta e estruturada.
+                  Preencha os campos abaixo. Ao clicar em solicitar, o WhatsApp abrirá com sua mensagem organizada para envio imediato.
                 </p>
               </div>
 
@@ -151,10 +154,10 @@ export const Contact: React.FC = () => {
                 <div className="p-5 sm:p-6 rounded-2xl bg-[#F5FAF2] border border-[#CDE5C4] text-center">
                   <CheckCircle2 className="w-9 h-9 sm:w-10 sm:h-10 text-[#4E8C3B] mx-auto mb-3" />
                   <h4 className="text-sm sm:text-base font-semibold text-[#274E1A] mb-1">
-                    Direcionando para o WhatsApp...
+                    Redirecionando para o WhatsApp...
                   </h4>
                   <p className="text-xs text-[#4E8C3B] max-w-md mx-auto mb-4">
-                    Caso a conversa não abra automaticamente, você pode clicar no botão abaixo para conversar com a clínica.
+                    Caso a conversa não abra automaticamente, clique no botão abaixo para concluir o contato.
                   </p>
                   <a
                     href={clinicData.contact.whatsappUrl}
@@ -167,6 +170,7 @@ export const Contact: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Nome */}
                   <div>
                     <label htmlFor="nome" className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#4A443E] mb-1">
                       Seu Nome Completo *
@@ -177,29 +181,15 @@ export const Contact: React.FC = () => {
                       required
                       value={formData.nome}
                       onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                      placeholder="Como podemos lhe chamar?"
+                      placeholder="Como você prefere ser chamada(o)?"
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#FAF8F5] border border-[#E2D8C9] text-xs sm:text-sm text-[#1F1C18] placeholder-[#9C9287] focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C]/40 focus:border-[#C4A47C] transition-all"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="telefone" className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#4A443E] mb-1">
-                      Telefone / WhatsApp *
-                    </label>
-                    <input
-                      type="tel"
-                      id="telefone"
-                      required
-                      value={formData.telefone}
-                      onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
-                      placeholder="(11) 99999-9999"
-                      className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#FAF8F5] border border-[#E2D8C9] text-xs sm:text-sm text-[#1F1C18] placeholder-[#9C9287] focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C]/40 focus:border-[#C4A47C] transition-all"
-                    />
-                  </div>
-
+                  {/* Procedimento */}
                   <div>
                     <label htmlFor="procedimento" className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#4A443E] mb-1">
-                      Procedimento de Interesse
+                      Procedimento de Interesse *
                     </label>
                     <select
                       id="procedimento"
@@ -212,11 +202,30 @@ export const Contact: React.FC = () => {
                           {t.title}
                         </option>
                       ))}
-                      <option value="Consulta Geral / Avaliação">Consulta Geral / Avaliação de Rotina</option>
-                      <option value="Outro assunto">Outro assunto</option>
+                      <option value="Avaliação Geral / Harmonização Facial">Avaliação Geral de Harmonização Facial</option>
+                      <option value="Outro assunto ou dúvida">Outro assunto ou dúvida</option>
                     </select>
                   </div>
 
+                  {/* Melhor período para atendimento (Opcional) */}
+                  <div>
+                    <label htmlFor="periodo" className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#4A443E] mb-1">
+                      Melhor Período para Atendimento (Opcional)
+                    </label>
+                    <select
+                      id="periodo"
+                      value={formData.periodo}
+                      onChange={(e) => setFormData({ ...formData, periodo: e.target.value })}
+                      className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#FAF8F5] border border-[#E2D8C9] text-xs sm:text-sm text-[#1F1C18] focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C]/40 focus:border-[#C4A47C] transition-all"
+                    >
+                      <option value="A combinar">A combinar</option>
+                      <option value="Manhã (09h às 12h)">Manhã (09h às 12h)</option>
+                      <option value="Tarde (13h às 18h)">Tarde (13h às 18h)</option>
+                      <option value="Final de tarde (a partir das 17h)">Final de tarde (a partir das 17h)</option>
+                    </select>
+                  </div>
+
+                  {/* Mensagem adicional (Opcional) */}
                   <div>
                     <label htmlFor="mensagem" className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#4A443E] mb-1">
                       Mensagem Adicional (Opcional)
@@ -226,7 +235,7 @@ export const Contact: React.FC = () => {
                       rows={3}
                       value={formData.mensagem}
                       onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
-                      placeholder="Conte-nos brevemente o que você busca para o seu sorriso..."
+                      placeholder="Conte brevemente o que você busca cuidar na sua pele ou harmonia facial..."
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#FAF8F5] border border-[#E2D8C9] text-xs sm:text-sm text-[#1F1C18] placeholder-[#9C9287] focus:outline-hidden focus:ring-2 focus:ring-[#C4A47C]/40 focus:border-[#C4A47C] transition-all resize-none"
                     />
                   </div>
@@ -236,14 +245,14 @@ export const Contact: React.FC = () => {
                       type="submit"
                       className="w-full py-3.5 sm:py-4 px-6 sm:px-8 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider hover:bg-[#38332D] transition-all duration-200 shadow-md flex items-center justify-center gap-2 group cursor-pointer"
                     >
-                      <span>Enviar Mensagem para o WhatsApp</span>
+                      <span>Solicitar agendamento</span>
                       <Send className="w-3.5 h-3.5 text-[#DFC49E] group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
 
                   <div className="flex items-center gap-2 justify-center text-[10px] sm:text-[11px] text-[#7E7469] pt-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#9D7C50] shrink-0" />
-                    <span>Seus dados são protegidos e utilizados apenas para o atendimento na clínica.</span>
+                    <span>Seus dados são protegidos e utilizados exclusivamente para orientar o seu atendimento.</span>
                   </div>
                 </form>
               )}
@@ -253,48 +262,31 @@ export const Contact: React.FC = () => {
 
         </div>
 
-        {/* Google Maps Interactive Card with Direct Route Tracing */}
-        <div className="mt-10 sm:mt-12 rounded-2xl sm:rounded-3xl bg-white border border-[#E5DAC9] shadow-md p-4 sm:p-7 text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-            <div className="flex items-start sm:items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-sm sm:text-base font-semibold text-[#1F1C18]">
-                  Como Chegar ao Consultório &bull; Rod. Alberto Hinoto, 2360
-                </h3>
-                <p className="text-xs text-[#6B655F] mt-0.5">
-                  Fácil acesso em Arujá — clique no botão para traçar sua rota no GPS ou aplicativo de navegação.
-                </p>
-              </div>
+        {/* Reassurance Notice without fake addresses or unconfirmed data */}
+        <div className="mt-10 sm:mt-12 p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-[#E5DAC9] text-left flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3.5">
+            <div className="w-9 h-9 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5">
+              <MessageCircle className="w-4 h-4" />
             </div>
-
-            <a
-              href={clinicData.contact.mapsRouteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider hover:bg-[#38332D] transition-colors shadow-2xs shrink-0 cursor-pointer"
-            >
-              <Navigation className="w-3.5 h-3.5 text-[#DFC49E]" />
-              <span>Traçar Rota no Google Maps</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#DFC49E]/70" />
-            </a>
+            <div>
+              <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">
+                Confirmação de Consulta
+              </h4>
+              <p className="text-[11px] sm:text-xs text-[#686058] mt-0.5 leading-relaxed">
+                A solicitação enviada via formulário não gera confirmação automática. A disponibilidade de datas e horários será alinhada diretamente com você via WhatsApp ou Instagram Direct.
+              </p>
+            </div>
           </div>
 
-          {/* Map View */}
-          <div className="relative w-full h-72 sm:h-96 rounded-xl sm:rounded-2xl overflow-hidden border border-[#EBE3D5] bg-[#EAE5DC]">
-            <iframe
-              src={clinicData.contact.mapsEmbedUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Dra. Alice Bastos - Rod. Alberto Hinoto, 2360, Arujá"
-            />
-          </div>
+          <a
+            href={clinicData.contact.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FAF5EE] text-[#8C6D45] text-xs font-semibold border border-[#E5DAC9] hover:bg-[#EFE8DC] transition-colors shrink-0"
+          >
+            <InstagramIcon className="w-3.5 h-3.5" />
+            <span>Perfil @dra.luizaslima</span>
+          </a>
         </div>
 
       </div>

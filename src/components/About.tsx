@@ -1,6 +1,6 @@
 import React from 'react';
 import { clinicData } from '../config/clinicData';
-import { Sparkles, CheckCircle2, Heart, Award, ArrowUpRight } from 'lucide-react';
+import { Sparkles, CheckCircle2, Heart, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
@@ -12,18 +12,18 @@ export const About: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: Real Photo 2 (holding aesthetic composite resins) */}
+          {/* Left Column: Real Photo with Editorial Frame (5 cols) */}
           <div className="lg:col-span-5 order-2 lg:order-1 flex justify-center w-full">
             <div className="relative w-full max-w-[380px] sm:max-w-[420px]">
               
-              {/* Backing decorative frame (hidden on small mobile to avoid horizontal shift) */}
+              {/* Backing decorative frame */}
               <div className="hidden sm:block absolute -inset-3 bg-[#EAE2D5] rounded-[32px] -rotate-1 pointer-events-none -z-10" />
 
               {/* Main Photo Card */}
               <div className="relative overflow-hidden rounded-[24px] sm:rounded-[28px] bg-white shadow-xl border border-[#E0D4C3]">
                 <img
-                  src="/images/about-dra-alice.png"
-                  alt="Dra. Alice Bastos com materiais estéticos no consultório em Arujá"
+                  src="/images/hero-dra-luiza.png"
+                  alt="Dra. Luiza S. Lima - Profissional de Estética Facial"
                   className="w-full h-auto object-cover object-top hover:scale-[1.02] transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
@@ -31,15 +31,15 @@ export const About: React.FC = () => {
                 {/* Floating pill badge */}
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/95 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-[#E5DAC9] shadow-sm flex items-center gap-2">
                   <Sparkles className="w-3.5 h-3.5 text-[#B8976C]" />
-                  <span className="text-[11px] sm:text-xs font-medium text-[#2E2822]">Estética & Biomimética</span>
+                  <span className="text-[11px] sm:text-xs font-medium text-[#2E2822]">Estética Facial & Harmonização</span>
                 </div>
 
                 {/* Professional caption footer inside image */}
-                <div className="p-4 sm:p-5 bg-white border-t border-[#F0E8DC]">
-                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[#9D7C50] font-semibold">Atendimento Particular</p>
-                  <p className="text-sm font-serif text-[#1F1C18] mt-0.5">Dra. Alice Bastos &bull; Arujá-SP</p>
+                <div className="p-4 sm:p-5 bg-white border-t border-[#F0E8DC] text-left">
+                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[#9D7C50] font-semibold">Atendimento Individualizado</p>
+                  <p className="text-sm font-serif text-[#1F1C18] mt-0.5">{clinicData.doctor.name}</p>
                   <p className="text-[11px] text-[#7A7268] mt-1 italic">
-                    "O verdadeiro valor está em um resultado harmônico, atemporal e saudável."
+                    "O verdadeiro valor está em um resultado harmônico, sutil e que respeite quem você já é."
                   </p>
                 </div>
               </div>
@@ -59,11 +59,15 @@ export const About: React.FC = () => {
             </h2>
 
             <p className="text-sm sm:text-lg text-[#554F49] font-light leading-relaxed mb-5 sm:mb-6">
-              A odontologia vai muito além de procedimentos técnicos: é sobre devolver a segurança de sorrir, a harmonia nas proporções faciais e o conforto em cada conversa. Em nosso consultório em Arujá, priorizamos um atendimento humano, individualizado e sem pressa.
+              {clinicData.doctor.aboutLead}
+            </p>
+
+            <p className="text-xs sm:text-base text-[#68625B] leading-relaxed mb-4">
+              {clinicData.doctor.aboutParagraph1}
             </p>
 
             <p className="text-xs sm:text-base text-[#68625B] leading-relaxed mb-7 sm:mb-8">
-              Com foco especial em tratamentos estéticos conservadores — como facetas e lentes em resina de alta resolução e ortodontia digital invisível —, o objetivo principal é realçar a beleza única do seu sorriso, sempre respeitando a saúde e a integridade biológica de cada dente.
+              {clinicData.doctor.aboutParagraph2}
             </p>
 
             {/* Core Values / Pillars */}
@@ -75,7 +79,7 @@ export const About: React.FC = () => {
                 <div>
                   <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Escuta e Atenção Plena</h4>
                   <p className="text-[11px] sm:text-xs text-[#6B655F] mt-1 leading-snug">
-                    Compreendemos seus desejos e planejamos cada passo juntos com total clareza.
+                    Compreensão das suas queixas antes de qualquer indicação ou procedimento.
                   </p>
                 </div>
               </div>
@@ -85,9 +89,9 @@ export const About: React.FC = () => {
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Técnica Minimamente Invasiva</h4>
+                  <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Naturalidade e Harmonia</h4>
                   <p className="text-[11px] sm:text-xs text-[#6B655F] mt-1 leading-snug">
-                    Preservação máxima do esmalte e da estrutura biológica natural dos seus dentes.
+                    Preservação dos traços nativos, sem exageros ou transformações artificiais.
                   </p>
                 </div>
               </div>
@@ -97,21 +101,21 @@ export const About: React.FC = () => {
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Materiais Nobres e Precisão</h4>
+                  <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Técnica e Precisão</h4>
                   <p className="text-[11px] sm:text-xs text-[#6B655F] mt-1 leading-snug">
-                    Uso de compósitos e sistemas ópticos de alta qualidade internacional.
+                    Aplicação criteriosa com foco na mímica facial e suporte dos contornos.
                   </p>
                 </div>
               </div>
 
               <div className="p-4 rounded-2xl bg-white/80 border border-[#E5DAC9] flex items-start gap-3">
                 <div className="p-2 rounded-xl bg-[#FAF5EE] text-[#9D7C50] shrink-0 mt-0.5">
-                  <Award className="w-4 h-4" />
+                  <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Registro e Ética</h4>
+                  <h4 className="text-xs sm:text-sm font-semibold text-[#1F1C18]">Conduta Ética & Responsável</h4>
                   <p className="text-[11px] sm:text-xs text-[#6B655F] mt-1 leading-snug">
-                    Atuação em estrita conformidade com as normas do Conselho Regional de Odontologia.
+                    Planejamento realista e transparente, respeitando as normas profissionais.
                   </p>
                 </div>
               </div>

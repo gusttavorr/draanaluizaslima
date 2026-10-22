@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { clinicData } from '../config/clinicData';
-import { Sparkles, ArrowRight, Check, Shield, HelpCircle } from 'lucide-react';
+import { Sparkles, ArrowRight, Check, Shield, HelpCircle, Star } from 'lucide-react';
 
 export const Treatments: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>(clinicData.treatments[0].id);
@@ -10,28 +10,30 @@ export const Treatments: React.FC = () => {
 
   const getWhatsappTreatmentUrl = (treatmentTitle: string) => {
     const text = encodeURIComponent(
-      `Olá, Dra. Alice! Gostaria de receber mais informações e tirar dúvidas sobre ${treatmentTitle} em seu consultório em Arujá.`
+      `Olá, Dra. Luiza! Gostaria de receber informações e tirar dúvidas sobre ${treatmentTitle} para uma avaliação individualizada.`
     );
-    return `https://wa.me/?text=${text}`;
+    return clinicData.contact.whatsappNumber
+      ? `https://wa.me/${clinicData.contact.whatsappNumber}?text=${text}`
+      : `https://wa.me/?text=${text}`;
   };
 
   return (
-    <section id="tratamentos" className="py-20 sm:py-28 bg-[#FAF8F5] relative overflow-hidden">
+    <section id="procedimentos" className="py-20 sm:py-28 bg-[#FAF8F5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-14 text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFE8DC] border border-[#DFCBB5] text-[#786148] text-xs font-semibold tracking-[0.2em] uppercase mb-4">
             <Sparkles className="w-3.5 h-3.5 text-[#B8976C]" />
-            <span>Procedimentos & Especialidades</span>
+            <span>Procedimentos & Abordagens</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1E1B18] font-normal leading-[1.18] mb-5">
-            Cuidados para o <span className="italic text-[#9D7C50]">seu sorriso.</span>
+            Cuidados para realçar a sua <span className="italic text-[#9D7C50]">beleza natural.</span>
           </h2>
 
           <p className="text-base sm:text-lg text-[#554F49] font-light leading-relaxed">
-            Procedimentos odontológicos planejados de forma individualizada, combinando precisão biomecânica, materiais contemporâneos e máximo respeito à anatomia natural de cada pessoa.
+            Procedimentos estéticos faciais conduzidos com precisão anatômica, foco em sustentação e total respeito aos contornos e à individualidade de cada pessoa.
           </p>
         </div>
 
@@ -49,7 +51,7 @@ export const Treatments: React.FC = () => {
                   type="button"
                   className={`text-left p-5 rounded-2xl transition-all duration-300 border flex items-center justify-between cursor-pointer ${
                     isSelected
-                      ? 'bg-white border-[#C4A47C] shadow-md -translate-x-1 sm:translate-x-2'
+                      ? 'bg-white border-[#C4A47C] shadow-md -translate-x-1 sm:translate-x-2 ring-1 ring-[#C4A47C]/30'
                       : 'bg-[#F5F0E8]/70 border-[#E8DFCFC0] hover:bg-white/80 hover:border-[#D5C6B1]'
                   }`}
                 >
@@ -62,10 +64,16 @@ export const Treatments: React.FC = () => {
                       0{idx + 1}
                     </span>
                     <div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <h3 className={`text-base font-semibold ${isSelected ? 'text-[#1F1C18]' : 'text-[#453F39]'}`}>
                           {treatment.title}
                         </h3>
+                        {treatment.highlight && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FAF0E1] text-[#9E7745] text-[10px] font-semibold border border-[#E9D5BD]">
+                            <Star className="w-2.5 h-2.5 fill-[#9E7745]" />
+                            Destaque
+                          </span>
+                        )}
                       </div>
                       <p className="text-xs text-[#6B655F] mt-1 line-clamp-1">
                         {treatment.shortDescription}
@@ -85,18 +93,22 @@ export const Treatments: React.FC = () => {
 
           {/* Right Column: Detailed Editorial Card for Selected Treatment (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E5DAC9] shadow-lg relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E5DAC9] shadow-lg relative overflow-hidden text-left">
               
               {/* Subtle gold decorative gradient bar on top */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#C4A47C] via-[#DFC49E] to-[#9D7C50]" />
 
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-                <span className="inline-block px-3.5 py-1 rounded-full bg-[#FAF5EE] text-[#9D7C50] text-xs font-semibold uppercase tracking-wider border border-[#EADCC8]">
-                  {activeTreatment.badge || 'Tratamento Especializado'}
+                <span className={`inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${
+                  activeTreatment.highlight
+                    ? 'bg-[#FAF0E1] text-[#8C6430] border-[#DFC29E]'
+                    : 'bg-[#FAF5EE] text-[#9D7C50] border-[#EADCC8]'
+                }`}>
+                  {activeTreatment.badge || 'Procedimento Especializado'}
                 </span>
                 <span className="text-xs text-[#8E8478] flex items-center gap-1.5">
                   <Shield className="w-3.5 h-3.5 text-[#C4A47C]" />
-                  Procedimento personalizado
+                  Planejamento individualizado
                 </span>
               </div>
 
@@ -108,10 +120,10 @@ export const Treatments: React.FC = () => {
                 {activeTreatment.fullDescription}
               </p>
 
-              {/* Benefits list */}
+              {/* Differential & Key Points */}
               <div className="mb-8">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-[#9D7C50] mb-3">
-                  Diferenciais e Benefícios:
+                  Pilares do Tratamento:
                 </h4>
                 <ul className="space-y-3">
                   {activeTreatment.benefits.map((benefit, bIdx) => (
@@ -130,7 +142,7 @@ export const Treatments: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <HelpCircle className="w-5 h-5 text-[#B8976C] shrink-0" />
                   <p className="text-xs text-[#686058] leading-snug">
-                    Quer saber se este tratamento é indicado para as necessidades do seu sorriso?
+                    Deseja entender como este procedimento pode valorizar a harmonia do seu rosto?
                   </p>
                 </div>
 
@@ -138,9 +150,9 @@ export const Treatments: React.FC = () => {
                   href={getWhatsappTreatmentUrl(activeTreatment.title)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider hover:bg-[#38332D] transition-colors shadow-2xs"
+                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider hover:bg-[#38332D] transition-colors shadow-2xs cursor-pointer"
                 >
-                  <span>Consultar no WhatsApp</span>
+                  <span>Consultar pelo WhatsApp</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#DFC49E]" />
                 </a>
               </div>

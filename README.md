@@ -1,18 +1,16 @@
-# Dra. Alice Bastos | Odontologia em Arujá-SP
+# Dra. Luiza S. Lima | Estética Facial & Harmonização
 
-Website institucional premium, moderno, elegante e responsivo desenvolvido para a **Dra. Alice Bastos**, cirurgiã-dentista com atuação em Arujá, São Paulo.
+Website institucional premium, contemporâneo, elegante e responsivo desenvolvido para a **Dra. Luiza S. Lima** ([@dra.luizaslima](https://www.instagram.com/dra.luizaslima/)), profissional de estética facial e harmonização.
 
 ## 🌟 Principais Recursos
 
-- **Identidade Visual Editorial & Sofisticada:** Paleta de tons marfim, bege suave, grafite e detalhes em champagne/dourado.
-- **Header & Navegação Fixa:** Menu responsivo com drawer móvel e rolagem suave para as seções.
-- **Hero Section:** Apresentação da profissional com fotografia real e direcionamento para agendamento.
-- **Sobre a Dra. Alice:** Fotografia real e apresentação institucional focada em acolhimento e odontologia biomimética.
-- **Tratamentos Especializados:** Vitrine interativa com procedimentos confirmados (Facetas em Resina, Alinhadores Invisíveis Sousmile, Clareamento, Restaurações e Profilaxia) e botão para solicitar informações via WhatsApp.
-- **A Clínica:** Galeria do consultório em Arujá com ênfase em serenidade, marcenaria acolhedora e biossegurança.
-- **Presença Digital:** Mockup realista de smartphone em CSS puro com reprodução interativa dos Reels oficiais do Instagram e opção de embed oficial.
-- **Contato & Agendamento:** Formulário inteligente integrado que gera mensagem direta e estruturada para o WhatsApp da clínica.
-- **Ética & Transparência:** Em estrita conformidade com as diretrizes do Conselho Federal de Odontologia (CFO/CRO-SP).
+- **Identidade Visual Editorial & Sofisticada:** Paleta de tons marfim, bege nude, areia, grafite e detalhes acetinados em champagne.
+- **Hero Section de Alto Impacto:** Composição assimétrica com fotografia profissional real, tipografia serifada elegante e CTAs de alta conversão.
+- **Sobre a Profissional:** Apresentação institucional focada em acolhimento, naturalidade e respeito rigoroso à anatomia de cada paciente.
+- **Procedimentos & Abordagens:** Apresentação refinada com destaque visual para Toxina Botulínica (Botox), Reestruturação & Sustentação Facial, Gerenciamento de Flacidez, Harmonização Facial e Avaliação Individualizada.
+- **Mockup Realista de Smartphone ("Um pouco mais sobre meu trabalho"):** Apresentação interativa de publicações e reels oficiais do perfil `@dra.luizaslima` com player interativo e modo embed oficial.
+- **Pré-Agendamento pelo WhatsApp:** Formulário com seleção de procedimentos, períodos sugeridos e mensagem estruturada para envio direto.
+- **Responsividade & Acessibilidade:** Experiência mobile fluida, microinterações refinadas e respeito à preferência de redução de movimento.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -33,11 +31,14 @@ npm run dev
 
 # Gerar build de produção
 npm run build
+
+# Executar linter
+npm run lint
 ```
 
 ## 🌐 Deploy na Vercel
 
-O projeto foi configurado com Vite e já está pronto para deploy imediato na [Vercel](https://vercel.com/):
+O projeto foi configurado com Vite e está pronto para deploy contínuo na [Vercel](https://vercel.com/):
 - **Framework Preset:** `Vite`
 - **Build Command:** `npm run build`
 - **Output Directory:** `dist`

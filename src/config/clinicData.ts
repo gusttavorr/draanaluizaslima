@@ -15,180 +15,195 @@ export interface TreatmentData {
   shortDescription: string;
   fullDescription: string;
   benefits: string[];
-  durationHint?: string;
   badge?: string;
+  highlight?: boolean;
+}
+
+export interface CarePillar {
+  title: string;
+  description: string;
 }
 
 export const clinicData = {
   doctor: {
-    name: "Dra. Alice Bastos",
+    name: "Dra. Luiza S. Lima",
     prefix: "Dra.",
-    title: "Cirurgiã-Dentista",
-    city: "Arujá",
-    state: "SP",
-    locationFull: "Arujá — São Paulo",
-    croNotice: "CRO-SP (Registro profissional ativo — a ser formalizado no rodapé)",
-    philosophyTitle: "Cuidado que começa em ouvir você",
-    philosophyQuote:
-      "Acredito em uma odontologia que valoriza a naturalidade, a saúde e o bem-estar de cada pessoa, sem padrões artificiais e com muito acolhimento em cada etapa.",
-    heroTitle: "Seu sorriso merece cuidado em cada detalhe.",
+    title: "Estética Facial",
+    subtitle: "Harmonização & Estética Facial",
+    instagramHandle: "@dra.luizaslima",
+    heroTitleLead: "Realce sua beleza, respeitando a sua",
+    heroTitleHighlight: "essência.",
     heroSubtitle:
-      "Um atendimento pensado para acolher você, compreender suas necessidades e cuidar do seu sorriso com atenção, dedicação e técnica refinada em Arujá.",
+      "Uma abordagem individualizada para cuidar da sua beleza com atenção, equilíbrio e naturalidade.",
+    philosophyTitle: "Beleza que respeita quem você é",
+    philosophyQuote:
+      "Uma reestruturação bem planejada devolve sustentação e melhora os contornos de forma sutil, respeitando a anatomia e a individualidade de cada pessoa.",
+    aboutLead:
+      "A estética facial é sobre equilíbrio, frescor e autoestima — nunca sobre transformar quem você é.",
+    aboutParagraph1:
+      "Com olhar clínico refinado e foco no atendimento humanizado, cada planejamento é desenvolvido de forma única e sem pressa. A prioridade é compreender a dinâmica da sua musculatura, a firmeza dos tecidos e as suas reais expectativas.",
+    aboutParagraph2:
+      "Com tratamentos focados em toxina botulínica, reestruturação e sustentação dos contornos faciais, o objetivo é devolver harmonia e leveza ao rosto, preservando a identidade e a expressividade natural.",
+    croNotice: "Atendimento estético profissional • Dados de registro a serem formalizados no rodapé",
   },
 
   contact: {
-    whatsappUrl: "https://wa.me/?text=Ol%C3%A1%2C%20Dra.%20Alice!%20Gostaria%20de%20solicitar%20informa%C3%A7%C3%B5es%20e%20verificar%20a%20disponibilidade%20de%20hor%C3%A1rios%20para%20uma%20avalia%C3%A7%C3%A3o%20em%20Aruj%C3%A1.",
-    whatsappDisplay: "WhatsApp da Clínica (Aguardando confirmação do número oficial)",
-    phoneDisplay: "(11) Contato a confirmar",
-    email: "contato@dralicebastos.com.br",
-    address: "Rod. Alberto Hinoto, 2360 — Arujá, SP",
-    mapsRouteUrl: "https://www.google.com/maps/dir/?api=1&destination=Rod.+Alberto+Hinoto,+2360+-+Aruj%C3%A1+-+SP",
-    mapsEmbedUrl: "https://maps.google.com/maps?q=Rod.+Alberto+Hinoto,+2360+-+Aruj%C3%A1+-+SP&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    // Para atualizar o número oficial, basta alterar a variável whatsappNumber (ex: "5511999999999")
+    whatsappNumber: "", 
+    get whatsappUrl() {
+      const defaultText = encodeURIComponent(
+        "Olá, Dra. Luiza! Gostaria de receber informações e verificar a disponibilidade de horários para uma avaliação facial."
+      );
+      return this.whatsappNumber
+        ? `https://wa.me/${this.whatsappNumber}?text=${defaultText}`
+        : `https://wa.me/?text=${defaultText}`;
+    },
+    whatsappDisplay: "WhatsApp da Profissional (Aguardando confirmação do número oficial)",
+    instagramUrl: "https://www.instagram.com/dra.luizaslima/",
+    instagramHandle: "@dra.luizaslima",
     hours: "Segunda a Sexta-feira: 09h às 18h (mediante agendamento prévio)",
-    instagramUrl: "https://www.instagram.com/dra.alicebastos/",
-    instagramHandle: "@dra.alicebastos",
+    locationNotice: "Atendimento com agendamento prévio individualizado",
   },
 
   instagramPosts: [
     {
       id: "post-1",
-      code: "DQnO6eBiQPk",
-      url: "https://www.instagram.com/p/DQnO6eBiQPk/",
-      title: "Tour pelo Nosso Novo Consultório",
-      category: "Espaço & Acolhimento",
-      thumbnail: "/images/reel-1.jpg",
+      code: "Dc1Sp2Zx_Zn",
+      url: "https://www.instagram.com/p/Dc1Sp2Zx_Zn/",
+      title: "Reestruturação e Sustentação Facial",
+      category: "Sustentação & Anatomia",
+      thumbnail: "/images/post-1.jpg",
       description:
-        "Um espaço planejado em cada detalhe para acolher você com serenidade, conforto e modernidade em Arujá. Pronto para transformar sorrisos com todo o carinho.",
-      tags: ["Novo Consultório", "Arujá-SP", "Acolhimento"],
+        "Uma reestruturação bem planejada pode devolver sustentação e melhorar os contornos de forma sutil, respeitando a anatomia e a individualidade de cada paciente.",
+      tags: ["Reestruturação", "HarmonizaçãoFacial", "Naturalidade"],
     },
     {
       id: "post-2",
-      code: "DYlQwiwsZtu",
-      url: "https://www.instagram.com/p/DYlQwiwsZtu/",
-      title: "Facetas em Resina Ultra Naturais",
-      category: "Odontologia Estética",
-      thumbnail: "/images/reel-2.jpg",
+      code: "Dc3jc4NxgQ_",
+      url: "https://www.instagram.com/p/Dc3jc4NxgQ_/",
+      title: "Cuidado e Acolhimento em Cada Detalhe",
+      category: "Experiência & Acolhimento",
+      thumbnail: "/images/post-2.jpg",
       description:
-        "Transformando sorrisos com leveza, textura e naturalidade. Porque um sorriso bonito não precisa parecer artificial — respeitamos a essência e os traços de cada paciente.",
-      tags: ["Facetas em Resina", "Naturalidade", "Harmonia"],
+        "Do cuidado ao acolhimento, aqui cada experiência é preparada com muito amor para receber cada um de vocês.",
+      tags: ["Acolhimento", "Experiência", "Cuidado"],
     },
     {
       id: "post-3",
-      code: "DWb70nUiTmF",
-      url: "https://www.instagram.com/p/DWb70nUiTmF/",
-      title: "10 Lentes em Resina: Realismo & Textura",
-      category: "Reabilitação Estética",
-      thumbnail: "/images/reel-3.jpg",
+      code: "DdDA7PRxcNU",
+      url: "https://www.instagram.com/p/DdDA7PRxcNU/",
+      title: "Melhora da Flacidez sem Mudar o Rosto",
+      category: "Contornos & Harmonia",
+      thumbnail: "/images/post-3.jpg",
       description:
-        "Caso conduzido com foco total na mimetização do esmalte natural: formato, anatomia, translucidez e harmonia biológica de longa durabilidade.",
-      tags: ["Lentes de Resina", "Biomimética", "Design de Sorriso"],
-    },
-    {
-      id: "post-4",
-      code: "DZtUVutJpn0",
-      url: "https://www.instagram.com/p/DZtUVutJpn0/",
-      title: "Alinhadores Invisíveis Sousmile",
-      category: "Ortodontia Digital",
-      thumbnail: "/images/reel-4.jpg",
-      description:
-        "Unboxing e tecnologia de ponta dos alinhadores transparentes Sousmile. Tratamento ortodôntico discreto, confortável e previsível para a sua rotina.",
-      tags: ["Alinhadores Invisíveis", "Sousmile", "Ortodontia Discreta"],
+        "Melhora da sensação de flacidez preservando a essência: reposicionamento e firmeza respeitando os traços que já eram da paciente.",
+      tags: ["Contornos", "Sustentação", "Equilíbrio"],
     },
   ] as InstagramPostData[],
 
   treatments: [
     {
-      id: "facetas-resina",
-      title: "Facetas e Lentes em Resina",
+      id: "toxina-botulinica",
+      title: "Toxina Botulínica (Botox)",
+      badge: "Procedimento em Destaque",
+      highlight: true,
       shortDescription:
-        "Escultura estética delicada com resinas de alta fidelidade óptica, preservando ao máximo a estrutura dental sadia.",
+        "Suavização refinada de linhas dinâmicas e prevenção do envelhecimento precoce com total preservação da sua expressão natural.",
       fullDescription:
-        "Técnica restauradora de precisão que permite harmonizar formato, proporção, fechamento de diastemas e alinhamento visual com naturalidade, sem a necessidade de desgastes agressivos.",
+        "Aplicação milimetricamente planejada para modular a contração muscular em áreas estratégicas — como testa, glabela ('entre as sobrancelhas') e região periocular ('pés de galinha'). O foco é descansar o olhar e prevenir linhas profundas, sem paralisar o rosto ou alterar a sua mímica espontânea.",
       benefits: [
-        "Preservação máxima da estrutura dental",
-        "Efeito biomimético com brilho e translucidez natural",
-        "Execução personalizada e ajuste anatômico em consultório",
+        "Preservação da expressividade e dos movimentos faciais espontâneos",
+        "Atenuação de linhas de expressão e prevenção de vincos permanentes",
+        "Procedimento seguro, pontual e com retorno imediato à rotina",
+        "Planejamento anatômico customizado para as proporções do seu rosto",
       ],
-      badge: "Destaque Estético",
     },
     {
-      id: "alinhadores-invisiveis",
-      title: "Alinhadores Invisíveis",
+      id: "reestruturacao-sustentacao",
+      title: "Reestruturação & Sustentação Facial",
+      badge: "Sustentação Anatômica",
+      highlight: false,
       shortDescription:
-        "Ortodontia digital moderna, imperceptível e removível para alinhar o seu sorriso com liberdade no dia a dia.",
+        "Reposicionamento suave e devolução de suporte para recuperar a firmeza e os contornos naturais da face.",
       fullDescription:
-        "Planejamento 3D sequencial utilizando placas transparentes termoformadas de alta precisão. Proporciona conforto, facilidade de higienização e discrição completa.",
+        "Com o tempo, as estruturas de suporte da face sofrem reabsorção natural, gerando sensação de flacidez e cansaço. A reestruturação facial repõe esses pontos de ancoragem fundamentais, promovendo suporte sutil e definição harmônica.",
       benefits: [
-        "Quase imperceptível aos olhos",
-        "Removível para refeições e escovação",
-        "Previsibilidade digital de cada etapa do tratamento",
+        "Devolução de firmeza e suporte aos vetores faciais",
+        "Definição suave dos contornos mandibulares e malares",
+        "Resultados elegantes que respeitam a anatomia individual",
+        "Sem excesso de volume ou aparência artificial",
       ],
-      badge: "Tecnologia Digital",
     },
     {
-      id: "clareamento-dental",
-      title: "Clareamento Personalizado",
+      id: "gerenciamento-flacidez",
+      title: "Gerenciamento da Flacidez & Firmeza",
+      badge: "Estímulo de Firmeza",
+      highlight: false,
       shortDescription:
-        "Protocolo seguro e supervisionado para restaurar a luminosidade e vivacidade do esmalte dental.",
+        "Cuidados dedicados à qualidade cutânea, estímulo biológico e recuperação da elasticidade e densidade da pele.",
       fullDescription:
-        "Avaliação criteriosa prévia com dosagem controlada de agentes clareadores, minimizando a sensibilidade e alcançando um resultado claro e natural.",
+        "Tratamento voltado para quem busca melhorar a textura, tonicidade e firmeza tecidual. Um plano contínuo que incentiva a vitalidade da derme de maneira progressiva, mantendo a pele saudável e luminosa.",
       benefits: [
-        "Acompanhamento profissional em todas as sessões",
-        "Protocolos específicos com foco em conforto gengival",
-        "Brilho saudável sem aspecto artificial",
+        "Aumento gradual da densidade e sustentação da pele",
+        "Melhora da textura, tônus e luminosidade",
+        "Cuidado progressivo com foco em longevidade da beleza",
+        "Tratamento sem modificação dos traços ou fisionomia",
       ],
-      badge: "Luminosidade",
     },
     {
-      id: "restauracoes-biomimeticas",
-      title: "Restaurações Biomiméticas",
+      id: "harmonizacao-facial-sutil",
+      title: "Harmonização Facial Equilibrada",
+      badge: "Harmonia & Proporção",
+      highlight: false,
       shortDescription:
-        "Recuperação funcional e estética de dentes com resinas compostas avançadas que imitam o dente natural.",
+        "Refinamento das proporções e realce dos pontos fortes do rosto, com equilíbrio e elegância discreta.",
       fullDescription:
-        "Troca de restaurações escuras ou desgastadas por compósitos nobres com propriedades ópticas e mecânicas fiéis à anatomia dental biológica.",
+        "Uma leitura minuciosa da arquitetura facial que busca alinhar proporções, luzes e sombras com sensibilidade estética. O objetivo nunca é criar um rosto novo, e sim realçar a melhor versão da sua própria beleza.",
       benefits: [
-        "Adesão segura e selamento marginal preciso",
-        "Textura e coloração imperceptíveis",
-        "Durabilidade e restabelecimento da mastigação",
+        "Valorização exclusiva da sua essência e traços característicos",
+        "Composição tridimensional harmônica e atemporal",
+        "Afastamento total de exageros ou padrões estéticos artificiais",
+        "Renovação da autoestima com naturalidade comprovada",
       ],
-      badge: "Saúde & Função",
     },
     {
-      id: "prevencao-profilaxia",
-      title: "Check-up & Profilaxia Suave",
+      id: "avaliacao-individualizada",
+      title: "Avaliação Facial & Diagnóstico Exclusivo",
+      badge: "Etapa Fundamental",
+      highlight: false,
       shortDescription:
-        "Cuidado preventivo contínuo, remoção delicada de placa e biofilme para manter a saúde bucal sempre em dia.",
+        "Consulta minuciosa para compreender suas queixas, mapear sua anatomia facial e traçar um planejamento sob medida.",
       fullDescription:
-        "Sessões regulares de limpeza profissional com ultrassom delicado e polimento dental, garantindo gengivas saudáveis e prevenção de intercorrências.",
+        "Cada rosto possui uma dinâmica anatômica e uma história próprias. A consulta de avaliação é o momento de escuta atenta, diagnóstico cuidadoso e alinhamento de expectativas antes de qualquer intervenção.",
       benefits: [
-        "Ambiente calmo e procedimento indolor",
-        "Prevenção eficaz contra tártaro e inflamações",
-        "Orientação personalizada de higiene domiciliar",
+        "Atendimento com tempo generoso e escuta qualificada",
+        "Mapeamento anatômico e dinâmica muscular detalhada",
+        "Transparência total sobre possibilidades e cuidados",
+        "Plano seguro construído em sintonia com os seus objetivos",
       ],
-      badge: "Prevenção Essencial",
     },
   ] as TreatmentData[],
 
-  clinicFeatures: [
+  carePillars: [
     {
-      title: "Ambiente Acolhedor e Sereno",
+      title: "Escuta Atenta e Sem Pressa",
       description:
-        "Consultório concebido para oferecer tranquilidade desde o primeiro minuto, com iluminação suave, paleta neutra e elementos naturais.",
+        "Cada consulta é um momento de acolhimento genuíno. Ouvimos suas queixas e desejos com sensibilidade para compreender o que você realmente busca para a sua autoestima.",
     },
     {
-      title: "Atendimento Humanizado Sem Pressa",
+      title: "Naturalidade Absoluta",
       description:
-        "Cada consulta é agendada com tempo generoso para ouvir suas queixas, esclarecer todas as dúvidas e planejar cada passo com transparência.",
+        "Respeito absoluto à sua anatomia de nascença. Nosso princípio inegociável é valorizar os seus traços únicos, sem excessos, volumes caricatos ou padrões artificiais.",
     },
     {
-      title: "Materiais de Referência Internacional",
+      title: "Planejamento Ético e Transparente",
       description:
-        "Utilização de resinas e alinhadores consagrados mundialmente (como resinas japonesas de alta estética e tecnologia Sousmile).",
+        "Diagnóstico responsável, sem promessas irrealistas de resultados garantidos ou intervenções desnecessárias. Clareza total em cada etapa.",
     },
     {
-      title: "Biossegurança e Protocolos Rigorosos",
+      title: "Cuidado e Rigor Técnico",
       description:
-        "Esterilização hospitalar e higienização contínua de todo o espaço para a máxima segurança de você e da sua família.",
+        "Ambiente preparado com zelo, assepsia estrita e materiais de excelência para proporcionar segurança e tranquilidade durante todo o atendimento.",
     },
-  ],
+  ] as CarePillar[],
 };

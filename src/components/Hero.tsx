@@ -1,11 +1,11 @@
 import React from 'react';
 import { clinicData } from '../config/clinicData';
-import { Calendar, ArrowDown, Sparkles, MapPin, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { Calendar, ArrowDown, Sparkles, ShieldCheck, HeartHandshake } from 'lucide-react';
 
 export const Hero: React.FC = () => {
-  const scrollToAbout = (e: React.MouseEvent) => {
+  const scrollToTreatments = (e: React.MouseEvent) => {
     e.preventDefault();
-    const target = document.querySelector('#sobre');
+    const target = document.querySelector('#procedimentos');
     if (target) {
       const headerOffset = 84;
       const elementPosition = target.getBoundingClientRect().top;
@@ -34,14 +34,16 @@ export const Hero: React.FC = () => {
             
             {/* Kicker badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EFE8DC] border border-[#DFCBB5] text-[#786148] text-[11px] sm:text-xs font-semibold tracking-[0.16em] sm:tracking-[0.2em] uppercase mb-5 sm:mb-6 shadow-2xs">
-              <MapPin className="w-3.5 h-3.5 text-[#B8976C] shrink-0" />
-              <span>Odontologia em Arujá &bull; SP</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#B8976C] shrink-0" />
+              <span>Estética Facial &bull; Abordagem Individualizada</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#1E1B18] font-normal leading-[1.18] sm:leading-[1.12] tracking-tight mb-5 sm:mb-6 break-words">
-              Seu sorriso merece cuidado em{' '}
-              <span className="italic font-normal text-[#9D7C50]">cada detalhe.</span>
+              {clinicData.doctor.heroTitleLead}{' '}
+              <span className="italic font-normal text-[#9D7C50]">
+                {clinicData.doctor.heroTitleHighlight}
+              </span>
             </h1>
 
             {/* Supportive Paragraph */}
@@ -58,15 +60,15 @@ export const Hero: React.FC = () => {
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs sm:text-sm font-semibold tracking-wider uppercase hover:bg-[#38332D] transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 group cursor-pointer"
               >
                 <Calendar className="w-4 h-4 text-[#DFC49E] group-hover:scale-110 transition-transform" />
-                <span>Agendar consulta</span>
+                <span>Agendar avaliação</span>
               </a>
 
               <a
-                href="#sobre"
-                onClick={scrollToAbout}
+                href="#procedimentos"
+                onClick={scrollToTreatments}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full bg-white/80 hover:bg-white text-[#38332D] text-xs sm:text-sm font-medium tracking-wide border border-[#DFCBB5] transition-all duration-300 hover:border-[#B8976C] shadow-2xs cursor-pointer"
               >
-                <span>Conheça a Dra. Alice</span>
+                <span>Conhecer os procedimentos</span>
                 <ArrowDown className="w-3.5 h-3.5 text-[#B8976C]" />
               </a>
             </div>
@@ -79,7 +81,7 @@ export const Hero: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1F1C18]">Naturalidade</h4>
-                  <p className="text-xs text-[#6B655F] leading-snug mt-0.5">Sem padrões artificiais ou exageros</p>
+                  <p className="text-xs text-[#6B655F] leading-snug mt-0.5">Resultados sutis que preservam sua essência</p>
                 </div>
               </div>
 
@@ -89,7 +91,7 @@ export const Hero: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1F1C18]">Acolhimento</h4>
-                  <p className="text-xs text-[#6B655F] leading-snug mt-0.5">Consulta sem pressa e com escuta</p>
+                  <p className="text-xs text-[#6B655F] leading-snug mt-0.5">Atendimento individual com escuta e calma</p>
                 </div>
               </div>
 
@@ -99,7 +101,7 @@ export const Hero: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1F1C18]">Precisão</h4>
-                  <p className="text-xs text-[#6B655F] leading-snug mt-0.5">Tecnologia e resinas de ponta</p>
+                  <p className="text-xs text-[#6B655F] leading-snug mt-0.5">Planejamento focado na sua anatomia</p>
                 </div>
               </div>
             </div>
@@ -112,14 +114,14 @@ export const Hero: React.FC = () => {
             {/* Elegant Background Frame / Card */}
             <div className="relative w-full max-w-[380px] sm:max-w-[420px]">
               
-              {/* Outer decorative architectural outline (hidden on small mobile to avoid horizontal scroll) */}
+              {/* Outer decorative architectural outline */}
               <div className="hidden sm:block absolute -inset-3 rounded-[32px] border border-[#DFC49E]/40 pointer-events-none -z-10 translate-x-2 translate-y-2" />
 
               {/* Main Photo Card */}
               <div className="relative overflow-hidden rounded-[24px] sm:rounded-[28px] bg-[#EFEAE2] shadow-xl border border-white/60">
                 <img
-                  src="/images/hero-dra-alice.png"
-                  alt="Dra. Alice Bastos - Cirurgiã-Dentista em Arujá SP no consultório"
+                  src="/images/hero-dra-luiza.png"
+                  alt="Dra. Luiza S. Lima - Estética Facial e Harmonização"
                   className="w-full h-auto object-cover object-top hover:scale-[1.02] transition-transform duration-700 ease-out"
                   loading="eager"
                   fetchPriority="high"
@@ -131,12 +133,12 @@ export const Hero: React.FC = () => {
                 {/* Floating Bottom Badge */}
                 <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 border border-[#EBE3D5] shadow-lg flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-semibold text-[#1F1C18]">Dra. Alice Bastos</p>
-                    <p className="text-[10px] sm:text-[11px] text-[#7B6E60]">Atendimento Odontológico &bull; Arujá</p>
+                    <p className="text-xs font-semibold text-[#1F1C18]">{clinicData.doctor.name}</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#7B6E60]">Estética Facial & Harmonização</p>
                   </div>
                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] text-[#9D7C50] text-[10px] font-semibold border border-[#E5DAC9]">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#9D7C50] animate-pulse" />
-                    <span>Agenda Aberta</span>
+                    <span>Atendimento Exclusivo</span>
                   </div>
                 </div>
               </div>
