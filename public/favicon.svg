@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DFC49E"/>
+      <stop offset="50%" stop-color="#C5A070"/>
+      <stop offset="100%" stop-color="#9C7748"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2D2823"/>
+      <stop offset="100%" stop-color="#181512"/>
+    </radialGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#bg)"/>
+  <rect x="3" y="3" width="94" height="94" rx="21" stroke="#DFC49E" stroke-opacity="0.3" stroke-width="1.5"/>
+  
+  <!-- Stylized Dental Clover Cross / Floral Monogram -->
+  <g transform="translate(50, 50)" stroke="url(#gold)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Top Tooth Silhouette -->
+    <path d="M -12 -16 C -12 -28 -5 -34 0 -34 C 5 -34 12 -28 12 -16 C 12 -10 6 -4 0 -4 C -6 -4 -12 -10 -12 -16 Z" />
+    <path d="M -4 -28 C -2 -31 2 -31 4 -28" />
+    
+    <!-- Bottom Tooth Silhouette -->
+    <path d="M -12 16 C -12 28 -5 34 0 34 C 5 34 12 28 12 16 C 12 10 6 4 0 4 C -6 4 -12 10 -12 16 Z" />
+    <path d="M -4 28 C -2 31 2 31 4 28" />
+
+    <!-- Left Floral Ribbon Petal -->
+    <path d="M -16 -12 C -28 -12 -34 -5 -34 0 C -34 5 -28 12 -16 12 C -10 12 -4 6 -4 0 C -4 -6 -10 -12 -16 -12 Z" />
+    
+    <!-- Right Floral Ribbon Petal -->
+    <path d="M 16 -12 C 28 -12 34 -5 34 0 C 34 5 28 12 16 12 C 10 12 4 6 4 0 C 4 -6 10 -12 16 -12 Z" />
+
+    <!-- Center Interlocking Core -->
+    <circle cx="0" cy="0" r="3" fill="url(#gold)" />
+  </g>
+</svg>
