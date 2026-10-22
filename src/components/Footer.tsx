@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Logo } from './Logo';
 import { clinicData } from '../config/clinicData';
 import { InstagramIcon } from './icons/InstagramIcon';
-import { ArrowUp, X, Shield } from 'lucide-react';
+import { ArrowUp, X, Shield, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
@@ -83,6 +83,18 @@ export const Footer: React.FC = () => {
                 <strong>Atuação:</strong> Cirurgiã-Dentista &bull; Odontologia Clínica e Estética
                 <br />
                 <strong>Registro Profissional:</strong> {clinicData.doctor.croNotice}
+                <br />
+                <strong>Endereço:</strong>{' '}
+                <a
+                  href={clinicData.contact.mapsRouteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#DFC49E] transition-colors underline-offset-2 hover:underline inline-flex items-center gap-1 text-[#C4B7A6]"
+                  title="Traçar rota no Google Maps"
+                >
+                  <span>{clinicData.contact.address}</span>
+                  <MapPin className="w-3 h-3 text-[#C4A47C] shrink-0" />
+                </a>
               </p>
               <p className="text-[11px] text-[#7A7064] leading-relaxed">
                 Este website tem finalidade estritamente institucional e informativa, de acordo com o Código de Ética Odontológica (Resolução CFO). Não substitui a avaliação clínica presencial individualizada.

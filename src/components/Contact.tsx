@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { clinicData } from '../config/clinicData';
 import { InstagramIcon } from './icons/InstagramIcon';
-import { MapPin, Clock, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { MapPin, Clock, Send, CheckCircle2, ShieldCheck, Navigation, ExternalLink } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -83,8 +83,17 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#9D7C50]">Localização</h4>
-                  <p className="text-xs sm:text-sm font-medium text-[#1F1C18] mt-0.5">{clinicData.doctor.locationFull}</p>
-                  <p className="text-[11px] sm:text-xs text-[#7A7268] mt-1">{clinicData.contact.address}</p>
+                  <p className="text-xs sm:text-sm font-medium text-[#1F1C18] mt-0.5">{clinicData.contact.address}</p>
+                  <a
+                    href={clinicData.contact.mapsRouteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EE] hover:bg-[#EFE8DC] text-[#8C6D45] text-[10px] sm:text-[11px] font-semibold border border-[#E5DAC9] transition-colors mt-2"
+                  >
+                    <Navigation className="w-3 h-3 text-[#B8976C]" />
+                    <span>Traçar rota no Google Maps</span>
+                    <ExternalLink className="w-2.5 h-2.5 text-[#B8976C]/80" />
+                  </a>
                 </div>
               </div>
 
@@ -242,6 +251,50 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* Google Maps Interactive Card with Direct Route Tracing */}
+        <div className="mt-10 sm:mt-12 rounded-2xl sm:rounded-3xl bg-white border border-[#E5DAC9] shadow-md p-4 sm:p-7 text-left">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#FAF5EE] text-[#9D7C50] flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-sm sm:text-base font-semibold text-[#1F1C18]">
+                  Como Chegar ao Consultório &bull; Rod. Alberto Hinoto, 2360
+                </h3>
+                <p className="text-xs text-[#6B655F] mt-0.5">
+                  Fácil acesso em Arujá — clique no botão para traçar sua rota no GPS ou aplicativo de navegação.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={clinicData.contact.mapsRouteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#1F1C18] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider hover:bg-[#38332D] transition-colors shadow-2xs shrink-0 cursor-pointer"
+            >
+              <Navigation className="w-3.5 h-3.5 text-[#DFC49E]" />
+              <span>Traçar Rota no Google Maps</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#DFC49E]/70" />
+            </a>
+          </div>
+
+          {/* Map View */}
+          <div className="relative w-full h-72 sm:h-96 rounded-xl sm:rounded-2xl overflow-hidden border border-[#EBE3D5] bg-[#EAE5DC]">
+            <iframe
+              src={clinicData.contact.mapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localização Dra. Alice Bastos - Rod. Alberto Hinoto, 2360, Arujá"
+            />
+          </div>
         </div>
 
       </div>
